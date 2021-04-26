@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT</title>
+
+    <!-- Added the Bootstrap CDN -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="switch.css">
+</head>
+<body>
+    <div class="col-sm-12">
+        <h1>MQTT Switch</h1> 
+        <h4 id='status-header'>Connecting to broker...</h4>
+        <div class="form-group container">
+            <div class="row">
+                <h4>Switch for NeoPixel at Index 0</h4>
+            </div>
+            <div class="row">
+                <!-- Rectangular switch -->
+                <label class="switch">
+                    <input type="checkbox" id="pub-switch">
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <!-- <div class="row"> -->
+                <!-- Rounded switch -->
+                <!-- <label class="switch">
+                    <input type="checkbox">
+                    <span class="slider round"></span>
+                </label>
+            </div> -->
+        </div>
+    </div>
+
+</body>
+<script src="./browserMqtt.js"></script>
+<script src="./switch.js"></script>
+</html>

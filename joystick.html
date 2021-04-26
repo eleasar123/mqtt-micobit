@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <title>Joy</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Example page of use pure Javascript JoyStick">
+    <meta name="author" content="Roberto D'Amico">
+    <link rel="shortcut icon" type="image/png" href="http://bobboteck.github.io/img/roberto-damico-bobboteck.png">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 10px;
+            background-color: rgb(14, 161, 187);
+        }
+
+        #joy3Div {
+            background-color: pink;
+            border-radius: 10%;
+        }
+        #input{
+            margin: 10px;
+            padding: 5px;
+            background-color: sandybrown;
+            text-align: center;
+            font-size: 30px;
+            border-radius: 10%;
+            box-shadow: 5px 10px #888888;
+        }
+        input{
+            margin: 10px;
+            font-size: 25px;
+            color: skyblue;
+        }
+        #title{
+            color: blueviolet;
+        }
+        .hi{
+            color: blueviolet;
+        }
+        #connect{
+            background-color: chartreuse;
+            width: 40vw;
+            height: 100px;
+            font-size: 25px;
+            padding: 20px;
+            text-align: center;
+            border-radius: 30% ;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <script src="joy.js"></script>
+    <script src="browserMqtt.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Example of FIXED or ABSOLUTE position -->
+    <div id="connect"></div>
+    <div id="joy3Div" style="width:200px;height:200px;margin:50px;position:fixed;top:30px;left:500px;"></div>
+    <div id="input" style="position:fixed;top:125px;left:750px;">
+        Position X:<input id="joy3PosizioneX" type="text" /><br />
+        Position Y:<input id="joy3PosizioneY" type="text" /><br />
+        Direction:<input id="joy3Direzione" type="text" /><br />
+        X :<input id="joy3X" type="text" /></br>
+        Y :<input id="joy3Y" type="text" />
+    </div>
+    <script type="text/javascript" src="joystick.js"></script>
+   
+        
+
+    <script type="text/javascript">
+         
+
+        // Create JoyStick object into the DIV 'joy1Div'
+
+        var joy3Param = { "title": "joystick3" };
+        var Joy3 = new JoyStick('joy3Div', joy3Param);
+
+        var joy3IinputPosX = document.getElementById("joy3PosizioneX");
+        var joy3InputPosY = document.getElementById("joy3PosizioneY");
+        var joy3Direzione = document.getElementById("joy3Direzione");
+        var joy3X = document.getElementById("joy3X");
+        var joy3Y = document.getElementById("joy3Y");
+
+        setInterval(function () { joy3IinputPosX.value = Joy3.GetPosX(); }, 50);
+        setInterval(function () { joy3InputPosY.value = Joy3.GetPosY(); }, 50);
+        setInterval(function () { joy3Direzione.value = Joy3.GetDir(); }, 50);
+        setInterval(function () { joy3X.value = Joy3.GetX(); }, 50);
+        setInterval(function () { joy3Y.value = Joy3.GetY(); }, 50);
+    </script>
+</body>
+
+</html>

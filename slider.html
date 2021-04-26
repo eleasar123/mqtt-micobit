@@ -1,0 +1,103 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliders</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+h1, h4 {
+    text-align: center;
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  /* width: 100%; Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+    </style>
+</head>
+<body>
+    <h1>Adafruit CLUE Sliders</h1>
+    <h4 id="status-header">Connecting...</h4>
+    <div class="slidecontainer container">
+        <div class="row">
+            <div class="col-xs-2">
+                <p>Temperature: <span id="demo"></span></p>
+            </div>
+            <div class="col-xs-10">
+                <input type="range" min="-55" max="125" value="0" class="slider" id="myRange">
+            </div>
+        </div>
+    </div>
+      <script src="./browserMqtt.js"></script>
+      <script>
+        
+        var broker = 'wss://mqtt.eclipse.org:443/mqtt';
+        var client  = mqtt.connect(broker);
+
+        var status_header = document.getElementById('status-header')
+
+        client.on('connect', function () {
+            status_header.innerHTML = 'Connected to '+broker; 
+            console.log('Connected to '+broker)
+        })
+        
+        var slider = document.getElementById("myRange");
+        var output = document.getElementById("demo");
+        output.innerHTML = slider.value; // Display the default slider value
+        
+        // Update the current slider value (each time you drag the slider handle)
+        slider.oninput = function() {
+          output.innerHTML = this.value;
+        }
+
+        slider.onmouseup = function() {
+            console.log(this.value)
+            client.publish('clue-slider', this.value)
+        }
+        
+        </script>
+</body>
+</html>

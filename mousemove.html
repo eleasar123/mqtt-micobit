@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div {
+  width: 200px;
+  height: 100px;
+  border: 1px solid black;
+}
+</style>
+</head>
+<body>
+
+<div onmouseenter="myFunction()" onmouseout="clearCoor()"></div>
+
+<script src="./browserMqtt.js"></script>
+<script>
+function myFunction() {
+  console.log("inside the div")
+  client.publish('mousemovement', 'inside')
+}
+
+function clearCoor() {
+  console.log("outside the div")
+  client.publish('mousemovement', 'outside')
+}
+
+var broker = 'wss://mqtt.eclipse.org:443/mqtt';
+var client  = mqtt.connect(broker);
+
+client.on('connect', () => {
+    console.log('Connected to '+broker);
+})
+
+</script>
+
+</body>
+</html>
