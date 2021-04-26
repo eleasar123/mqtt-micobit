@@ -1,5 +1,5 @@
 console.log("reached");
-        // var mqtt=mqtt.client();
+//wss:mqtt.eclipse.org:443/mqtt
         var broker = 'wss://test.mosquitto.org:8081/mqtt';
         var client  =mqtt.connect(broker);
 
@@ -38,7 +38,7 @@ console.log("reached");
                 console.log("E");
                 client.publish("mousemovement", "east");
             }else if($direction=="W"){
-                console.log("NE");
+                console.log("W");
                 client.publish("mousemovement", "west");
             }
         })
