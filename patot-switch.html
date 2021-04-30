@@ -1,0 +1,101 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MQTT</title>
+
+    <!-- Added the Bootstrap CDN -->
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="switch.css">
+</head>
+<body>
+    <div class="col-sm-12">
+        <h1>MQTT Switch</h1> 
+        <h4 id='status-header'>Connecting to broker...</h4>
+        <div class="form-group container">
+            <div class="row">
+                <h4>Switch for NeoPixel at Index 0</h4>
+            </div>
+            <div class="row">
+                <!-- Rectangular switch -->
+                <label class="switch">
+                    <input type="checkbox" id="pub-switch">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <div class="row">
+                <h4>Switch for NeoPixel at Index 0</h4>
+            </div>
+            <div class="row">
+                <!-- Rectangular switch -->
+                <label class="switch">
+                    <input type="checkbox" id="pub-switch2">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+            <div class="row">
+                <h4>Switch for NeoPixel at Index 0</h4>
+            </div>
+            <div class="row">
+                <!-- Rectangular switch -->
+                <label class="switch">
+                    <input type="checkbox" id="pub-switch3">
+                    <span class="slider round"></span>
+                </label>
+            </div>
+
+        
+        </div>
+    </div>
+
+</body>
+<script src="./browserMqtt.js"></script>
+<script >
+
+    // var client  = mqtt.connect({ host:'test.mosquitto.org', port: 8081})
+// or
+// var client  = mqtt.connect('wss://test.mosquitto.org:8081/mqtt')
+
+// var client  = mqtt.connect({ host:'mqtt.eclipse.org/mqtt', port: 443})
+// or
+// var client  = mqtt.connect('wss://mqtt.eclipse.org:443/mqtt')
+
+var broker = 'wss://mqtt.eclipse.org:443/mqtt';
+var client  = mqtt.connect(broker);
+
+var status_header = document.getElementById('status-header')
+
+client.on('connect', function () {
+    status_header.innerHTML = 'Connected to '+broker; 
+    console.log('Connected to '+broker)
+})
+  
+var pub_switch = document.getElementById('pub-switch');
+var pub_switch2 = document.getElementById('pub-switch2');
+var pub_switch3 = document.getElementById('pub-switch3');
+pub_switch.onclick = () => {
+    console.log(pub_switch.checked)
+    client.publish('cpx-switch/switch1', String(pub_switch.checked))
+}
+pub_switch2.onclick = () => {
+    console.log(pub_switch2.checked)
+    client.publish('cpx-switch/switch2', String(pub_switch2.checked))
+}
+pub_switch3.onclick = () => {
+    console.log(pub_switch3.checked)
+    client.publish('cpx-switch/switch3', String(pub_switch3.checked))
+}
+
+
+</script>
+</html>

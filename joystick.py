@@ -10,27 +10,27 @@ def on_connect(client, userdata, flags, rc):
 def on_message(client, userdata, msg):
     if msg.payload.decode() == "north":
         display.show(Image.ARROW_N)
-    if msg.payload.decode() == "northeast":
+    elif msg.payload.decode() == "northeast":
         display.show(Image.ARROW_NE)
-    if msg.payload.decode() == "southeast":
+    elif msg.payload.decode() == "southeast":
         display.show(Image.ARROW_SE)
-    if msg.payload.decode() == "south":
+    elif msg.payload.decode() == "south":
         display.show(Image.ARROW_S)
-    if msg.payload.decode() == "southwest":
+    elif msg.payload.decode() == "southwest":
         display.show(Image.ARROW_SW)
-    if msg.payload.decode() == "northwest":
+    elif msg.payload.decode() == "northwest":
         display.show(Image.ARROW_NW)
-    if msg.payload.decode() == "west":
+    elif msg.payload.decode() == "west":
         display.show(Image.ARROW_W)
-    if msg.payload.decode() == "east":
+    elif msg.payload.decode() == "east":
         display.show(Image.ARROW_E)
-    else:
+    elif msg.payload.decode()=="center":
         display.show(Image.NO)
 
 client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 
-client.connect("wss://test.mosquitto.org:8081/mqtt", 1883, 60)
+client.connect("mqtt.eclipseprojects.io", 1883, 60)
 
 client.loop_forever()
