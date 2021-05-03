@@ -254,20 +254,95 @@
       status_header.innerHTML = 'Connected to ' + broker;
       console.log('Connected to ' + broker)
     })
+    $("#accelXRange").on("input", function(){
+      $("#accelX").html($(this).val())
+      client.publish('clue-slider/accelX', this.value)
+    });
 
-    var slider = document.getElementById("temperatureRange");
-    var output = document.getElementById("temperature");
-    output.innerHTML = slider.value; // Display the default slider value
+    $("#accelYRange").on("input",function(){
+      $("#accelY").html($(this).val())
+      client.publish('clue-slider/accelY', this.value)
+    });
+    
+    $("#accelZRange").on("input",function(){
+      $("#accelZ").html($(this).val())
+      client.publish('clue-slider/accelZ', this.value)
+    });
+    
+    $("#gyroXRange").on("input", function(){
+      $("#gyroX").html($(this).val())
+      client.publish('clue-slider/gyroX', this.value)
+    });
 
-    // Update the current slider value (each time you drag the slider handle)
-    slider.oninput = function () {
-      output.innerHTML = this.value;
-    }
+    $("#gyroYRange").on("input", function(){
+      $("#gyroY").html($(this).val())
+      client.publish('clue-slider/gyroY', this.value)
+    });
 
-    slider.onmouseup = function () {
-      console.log(this.value)
-      client.publish('clue-slider', this.value)
-    }
+    $("#gyroZRange").on("input", function(){
+      $("#gyroZ").html($(this).val())
+      client.publish('clue-slider/gyroZ', this.value)
+    });
+
+    $("#magnetXRange").on("input", function(){
+      $("#magnetX").html($(this).val())
+      client.publish('clue-slider/magnetX', this.value)
+    });
+
+    $("#magnetYRange").on("input", function(){
+      $("#magnetY").html($(this).val())
+      client.publish('clue-slider/magnetY', this.value)
+    });
+
+    $("#magnetZRange").on("input", function(){
+      $("#magnetZ").html($(this).val())
+      client.publish('clue-slider/magnetZ', this.value)
+    });
+
+    $("#rRange").on("input", function(){
+      $("#R").html($(this).val())
+      client.publish('clue-slider/colorR', this.value)
+    });
+
+    $("#gRange").on("input", function(){
+      $("#G").html($(this).val())
+      client.publish('clue-slider/colorG', this.value)
+    });
+
+    $("#bRange").on("input", function(){
+      $("#B").html($(this).val())
+      client.publish('clue-slider/colorB', this.value)
+    });
+
+    $("#lightRange").on("input", function(){
+      $("#light").html($(this).val())
+      client.publish('clue-slider/light', this.value)
+    });
+
+    $("#pressureRange").on("input", function(){
+      $("#pressure").html($(this).val())
+      client.publish('clue-slider/pressure', this.value)
+    });
+
+    $("#temperatureRange").on("input", function(){
+      $("#temperature").html($(this).val())
+      client.publish('clue-slider/temperature', this.value)
+    });
+
+    $("#proximityRange").on("input", function(){
+      $("#proximity").html($(this).val())
+      client.publish('clue-slider/proximity', this.value)
+    });
+
+    $("#humidityRange").on("input", function(){
+      $("#humidity").html($(this).val())
+      client.publish('clue-slider/humidity', this.value)
+    });
+    
+    // sliderTemp.onmouseup = function () {
+    //   console.log(this.value)
+    //   client.publish('clue-slider', this.value)
+    // }
 
   </script>
 </body>

@@ -29,9 +29,14 @@ def on_connect(client, userdata, flags, rc):
         display_text(0)
 
 def on_message(client, userdata, msg):
-    display_text(int(msg.payload.decode()))
+    input = String(msg.payload.decode())
+    slider=input[0,2]
+    payload = int(input[2])
+    if slider == "ax":
+        display_text(int(msg.payload.decode()))
+    # display_text(int(msg.payload.decode()))
 
-clue.sea_level_pressure = 1020
+# clue.sea_level_pressure = 1020
 
 clue_data = clue.simple_text_display(text_scale=2)
 
@@ -39,6 +44,6 @@ client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 
-client.connect("mqtt.eclipse.org", 1883, 60)
+client.connect("mqtt.eclipseprojects.io", 1883, 60)
 
 client.loop_forever()

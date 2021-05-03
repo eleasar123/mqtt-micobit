@@ -9,8 +9,12 @@ def on_connect(client, userdata, flags, rc):
 
 def on_message(client, userdata, msg):
     # print(msg.topic+" "+msg.payload.decode())
-    if msg.payload.decode() == "true":
+    if msg.payload.decode() == "1true":
         cp.pixels[0] = (255, 255, 255)
+    elif msg.payload.decode() == "2true":
+        cp.pixels[2] = (255, 255, 255)
+    elif msg.payload.decode() == "3true":
+        cp.pixels[3] = (255, 255, 255)
     else:
         cp.pixels[0] = (0, 0, 0)
 
@@ -20,7 +24,7 @@ client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 
-client.connect("mqtt.eclipse.org", 1883, 60)
+client.connect("mqtt.eclipseprojects.io", 1883, 60)
 
 client.loop_forever()
 

@@ -33,7 +33,7 @@
             </div>
 
             <div class="row">
-                <h4>Switch for NeoPixel at Index 0</h4>
+                <h4>Switch for NeoPixel at Index 1</h4>
             </div>
             <div class="row">
                 <!-- Rectangular switch -->
@@ -44,7 +44,7 @@
             </div>
 
             <div class="row">
-                <h4>Switch for NeoPixel at Index 0</h4>
+                <h4>Switch for NeoPixel at Index 2</h4>
             </div>
             <div class="row">
                 <!-- Rectangular switch -->
@@ -70,7 +70,7 @@
 // or
 // var client  = mqtt.connect('wss://mqtt.eclipse.org:443/mqtt')
 
-var broker = 'wss://mqtt.eclipse.org:443/mqtt';
+var broker = 'wss://mqtt.eclipseprojects.io:443/mqtt';
 var client  = mqtt.connect(broker);
 
 var status_header = document.getElementById('status-header')
@@ -85,15 +85,15 @@ var pub_switch2 = document.getElementById('pub-switch2');
 var pub_switch3 = document.getElementById('pub-switch3');
 pub_switch.onclick = () => {
     console.log(pub_switch.checked)
-    client.publish('cpx-switch/switch1', String(pub_switch.checked))
+    client.publish('cpx-switch/switch1', String(1+pub_switch.checked))
 }
 pub_switch2.onclick = () => {
     console.log(pub_switch2.checked)
-    client.publish('cpx-switch/switch2', String(pub_switch2.checked))
+    client.publish('cpx-switch/switch2', String(2+pub_switch2.checked))
 }
 pub_switch3.onclick = () => {
     console.log(pub_switch3.checked)
-    client.publish('cpx-switch/switch3', String(pub_switch3.checked))
+    client.publish('cpx-switch/switch3', String(3+pub_switch3.checked))
 }
 
 

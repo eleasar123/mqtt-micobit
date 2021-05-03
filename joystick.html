@@ -14,8 +14,8 @@
         body {
             margin: 10px;
             background-color: rgb(14, 161, 187);
-            
-                
+
+
         }
 
         #joy3Div {
@@ -57,8 +57,9 @@
             border-radius: 30%;
             font-family: Arial, Helvetica, sans-serif;
         }
-        #input{
-            height:auto;
+
+        #input {
+            height: auto;
             width: 50vw;
             text-align: center;
 
@@ -74,17 +75,19 @@
 </head>
 
 <body>
-<center>  
-    <!-- Example of FIXED or ABSOLUTE position -->
-    <div id="connect"></div>
-    <div id="joy3Div" style="width:200px;height:200px;margin-right:0%;margin-top:20px;margin-bottom: 20px;position:static;top:30px;left:500px;"></div>
-    <div id="input" style="position:initial;top:125px;left:750px;">
-        Position X:<input id="joy3PosizioneX" type="text" /><br /> Position Y:<input id="joy3PosizioneY"
-            type="text" /><br /> Direction:
-        <input id="joy3Direzione" type="text" /><br /> X :<input id="joy3X" type="text" /></br>
-        Y :<input id="joy3Y" type="text" />
-    </div>
-</center>  
+    <center>
+        <!-- Example of FIXED or ABSOLUTE position -->
+        <div id="connect"></div>
+        <div id="joy3Div"
+            style="width:200px;height:200px;margin-right:0%;margin-top:20px;margin-bottom: 20px;position:static;top:30px;left:500px;">
+        </div>
+        <div id="input" style="position:initial;top:125px;left:750px;">
+            Position X:<input id="joy3PosizioneX" type="text" /><br /> Position Y:<input id="joy3PosizioneY"
+                type="text" /><br /> Direction:
+            <input id="joy3Direzione" type="text" /><br /> X :<input id="joy3X" type="text" /></br>
+            Y :<input id="joy3Y" type="text" />
+        </div>
+    </center>
     <script>
         console.log("reached");
         //wss:mqtt.eclipse.org:443/mqtt
@@ -96,53 +99,26 @@
             $('#connect').html("Connected to " + broker);
         });
 
-        $("#joy3Div").mouseenter(function () {
-            console.log("entered")
-            console.log($('#joy3PosizioneX').val())
-            console.log($('#joy3PosizioneY').val())
-            console.log("enter");
-            console.log($('#joy3Direzione').val())
-            console.log($('#joy3X').val())
-            console.log($('#joy3Y').val())
-            $direction = $('#joy3Direzione').val();
-            if ($direction == "N") {
-                console.log("N");
-                client.publish("mousemovement", "north");
-            } else if ($direction == "NW") {
-                console.log("NW");
-                client.publish("mousemovement", "northwest");
-            } else if
-                ($direction == "SW") {
-                console.log("SW");
-                client.publish("mousemovement", "northeast");
-            } else if ($direction == "S") {
-                console.log("S");
-                client.publish("mousemovement", "south");
-            } else if ($direction == "SE") {
-                console.log("SE"); client.publish("mousemovement", "southeast");
-            } else if
-                ($direction == "NE") {
-                console.log("NE"); client.publish("mousemovement",
-                    "northeast");
-            } else if ($direction == "E") {
-                console.log("E");
-                client.publish("mousemovement", "east");
-            } else if ($direction == "W") {
-                console.log("W"); client.publish("mousemovement", "west");
-            }else if ($direction=="C"){
-                console.log("C")
-                client.publish("mousemovement", "center")
-            }
-        })
+        // $("#joy3Div").mouseenter(function () {
+        //     console.log("entered")
+        //     console.log($('#joy3PosizioneX').val())
+        //     console.log($('#joy3PosizioneY').val())
+        //     console.log("enter");
+        //     console.log($('#joy3Direzione').val())
+        //     console.log($('#joy3X').val())
+        //     console.log($('#joy3Y').val())
+        //     $direction = $('#joy3Direzione').val();
 
-        $("#joy3Div").mouseleave(function () {
-            console.log("left");
+        // })
+
+        // $("#joy3Div").mouseleave(function () {
+        //     console.log("left");
             // console.log($('#joy3PosizioneX').val())
             // console.log($('#joy3PosizioneY').val())
-            console.log($('#joy3Direzione').val())
-            console.log($('#joy3X').val())
-            console.log($('#joy3Y').val())
-        })
+        //     console.log($('#joy3Direzione').val())
+        //     console.log($('#joy3X').val())
+        //     console.log($('#joy3Y').val())
+        // })
 
         // var broker = 'wss://mqtt.eclipse.org:443/mqtt';
         // var client  = mqtt.connect(broker);
@@ -164,6 +140,28 @@
         }, 100);
         setInterval(function () {
             joy3Direzione.value = Joy3.GetDir();
+            if (joy3Direzione.value == "N") {
+                client.publish("mousemovement", "north");
+            } else if (joy3Direzione.value == "NW") {
+                client.publish("mousemovement", "northwest");
+            } else if
+                (joy3Direzione.value == "SW") {
+                client.publish("mousemovement", "northeast");
+            } else if (joy3Direzione.value == "S") {
+                client.publish("mousemovement", "south");
+            } else if (joy3Direzione.value == "SE") {
+                client.publish("mousemovement", "southeast");
+            } else if(joy3Direzione.value == "NE") {
+                 client.publish("mousemovement","northeast");
+            } else if (joy3Direzione.value == "E") {
+            
+                client.publish("mousemovement", "east");
+            } else if (joy3Direzione.value == "W") {
+                client.publish("mousemovement", "west");
+            } else if (joy3Direzione.value == "C") {
+                
+                client.publish("mousemovement", "center")
+            }
         }, 100);
         setInterval(function () {
             joy3X.value = Joy3.GetX();
