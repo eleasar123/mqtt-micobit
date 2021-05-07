@@ -1,12 +1,11 @@
 from microbit import *
 import paho.mqtt.client as mqtt
 
-
+CIRCLE = Image("09990:90009:90009:90009:09990")
 def on_connect(client, userdata, flags, rc):
     if rc == 0:
         client.subscribe("mousemovement")
         display.show(Image.YES)
-
 def on_message(client, userdata, msg):
     if msg.payload.decode() == "north":
         display.show(Image.ARROW_N)
@@ -25,7 +24,7 @@ def on_message(client, userdata, msg):
     elif msg.payload.decode() == "east":
         display.show(Image.ARROW_E)
     elif msg.payload.decode()=="center":
-        display.show(Image.NO)
+        display.show(CIRCLE)
 
 client = mqtt.Client()
 client.on_connect = on_connect
