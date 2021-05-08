@@ -29,15 +29,51 @@ def on_connect(client, userdata, flags, rc):
         display_text(0)
 
 def on_message(client, userdata, msg):
-    input = String(msg.payload.decode())
-    slider=input[0,2]
-    payload = int(input[2])
-    if slider == "ax":
+    input = str(msg.payload.decode())
+    print(input)
+    slider=input[0:5]
+    print(slider)
+    payload = input[5:]
+    print(payload)
+    if slider == "accelX":
+        display_text(int(payload))
+    if slider == "accelX":
+        display_text(int(msg.payload.decode()))
+    if slider == "accelY":
+        display_text(int(msg.payload.decode()))
+    if slider == "accelZ":
+        display_text(int(msg.payload.decode()))
+    if slider == "magneX":
+        display_text(int(msg.payload.decode()))
+    if slider == "magneY":
+        display_text(int(msg.payload.decode()))
+    if slider == "magneZ":
+        display_text(int(msg.payload.decode()))
+    if slider == "gyroX":
+        display_text(int(msg.payload.decode()))
+    if slider == "gyroY":
+        display_text(int(msg.payload.decode()))
+    if slider == "gyroZ":
+        display_text(int(msg.payload.decode()))
+    if slider == "colorR":
+        display_text(int(msg.payload.decode()))
+    if slider == "colorG":
+        display_text(int(msg.payload.decode()))
+    if slider == "colorB":
+        display_text(int(msg.payload.decode()))
+    if slider == "lightI":
+        display_text(int(msg.payload.decode()))
+    if slider == "pressU":
+        display_text(int(msg.payload.decode()))
+    if slider == "tempE":
+        display_text(int(msg.payload.decode()))
+    if slider == "proxI":
+        display_text(int(msg.payload.decode()))
+    if slider == "humiD":
         display_text(int(msg.payload.decode()))
     # display_text(int(msg.payload.decode()))
 
-clue.sea_level_pressure = 1020
-
+clue.sea_level_pressure = 1020  
 clue_data = clue.simple_text_display(text_scale=2)
 
 client = mqtt.Client()

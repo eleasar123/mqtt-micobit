@@ -1,350 +1,349 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sliders</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliders</title>
 
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-  <style>
-    h1,
-    h4 {
-      text-align: center;
-    }
-
-    span {
-      width: 50px;
-    }
-
-    .slidecontainer {
-      width: 30%;
-      /* Width of the outside container */
-    }
-
-    /* The slider itself */
-    .slider {
-      -webkit-appearance: none;
-      /* Override default CSS styles */
-      appearance: none;
-      /* width: 100%; Full-width */
-      height: 25px;
-      /* Specified height */
-      background: #d3d3d3;
-      /* Grey background */
-      outline: none;
-      /* Remove outline */
-      opacity: 0.7;
-      /* Set transparency (for mouse-over effects on hover) */
-      -webkit-transition: .2s;
-      /* 0.2 seconds transition on hover */
-      transition: opacity .2s;
-    }
-
-    /* Mouse-over effects */
-    .slider:hover {
-      opacity: 1;
-      /* Fully shown on mouse-over */
-    }
-
-    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
-    .slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      /* Override default look */
-      appearance: none;
-      width: 25px;
-      /* Set a specific slider handle width */
-      height: 25px;
-      /* Slider handle height */
-      background: #4CAF50;
-      /* Green background */
-      cursor: pointer;
-      /* Cursor on hover */
-    }
-
-    .slider::-moz-range-thumb {
-      width: 25px;
-      /* Set a specific slider handle width */
-      height: 25px;
-      /* Slider handle height */
-      background: #4CAF50;
-      /* Green background */
-      cursor: pointer;
-      /* Cursor on hover */
-    }
-    .col-sm-6{
-      padding: 50px;
-    }
-    
-  </style>
+    <style>
+        h1,
+        h4 {
+            text-align: center;
+        }
+        
+        span {
+            width: 50px;
+        }
+        
+        .slidecontainer {
+            width: 30%;
+            /* Width of the outside container */
+        }
+        /* The slider itself */
+        
+        .slider {
+            -webkit-appearance: none;
+            /* Override default CSS styles */
+            appearance: none;
+            /* width: 100%; Full-width */
+            height: 25px;
+            /* Specified height */
+            background: #d3d3d3;
+            /* Grey background */
+            outline: none;
+            /* Remove outline */
+            opacity: 0.7;
+            /* Set transparency (for mouse-over effects on hover) */
+            -webkit-transition: .2s;
+            /* 0.2 seconds transition on hover */
+            transition: opacity .2s;
+        }
+        /* Mouse-over effects */
+        
+        .slider:hover {
+            opacity: 1;
+            /* Fully shown on mouse-over */
+        }
+        /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+        
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            /* Override default look */
+            appearance: none;
+            width: 25px;
+            /* Set a specific slider handle width */
+            height: 25px;
+            /* Slider handle height */
+            background: #4CAF50;
+            /* Green background */
+            cursor: pointer;
+            /* Cursor on hover */
+        }
+        
+        .slider::-moz-range-thumb {
+            width: 25px;
+            /* Set a specific slider handle width */
+            height: 25px;
+            /* Slider handle height */
+            background: #4CAF50;
+            /* Green background */
+            cursor: pointer;
+            /* Cursor on hover */
+        }
+        
+        .col-sm-6 {
+            padding: 50px;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container-fluid" >
-    <h1>Adafruit CLUE Sliders</h1>
-    <h4 id="status-header">Connecting...</h4>
-    <br>
+    <div class="container-fluid">
+        <h1>Adafruit CLUE Sliders</h1>
+        <h4 id="status-header">Connecting...</h4>
+        <br>
 
-    <div class="col-sm-6" style="width: 45vw;">
-      <h1>Accelerometer</h1>
-      <div class="slidecontainer container" style="width: fit-content;">
-        <div class="row">
-          <div class="col-xs-4">
-            <p>X: <span id="accelX"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="-1023" max="1023" value="0" class="slider" id="accelXRange">
-          </div>
-          <div class="col-xs-4">
-            <p>Y: <span id="accelY"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="-1023" max="1023" value="0" class="slider" id="accelYRange">
-          </div>
-          <div class="col-xs-4">
-            <p>Z: <span id="accelZ"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="-1023" max="1023" value="0" class="slider" id="accelZRange">
-          </div>
+        <div class="col-sm-6" style="width: 45vw;">
+            <h1>Accelerometer</h1>
+            <div class="slidecontainer container" style="width: fit-content;">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <p>X: <span id="accelX"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="-1023" max="1023" value="0" class="slider" id="accelXRange">
+                    </div>
+                    <div class="col-xs-4">
+                        <p>Y: <span id="accelY"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="-1023" max="1023" value="0" class="slider" id="accelYRange">
+                    </div>
+                    <div class="col-xs-4">
+                        <p>Z: <span id="accelZ"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="-1023" max="1023" value="0" class="slider" id="accelZRange">
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="col-sm-6" style="width: 45vw;">
-      <h1>Gyroscope</h1>
-      <div class="slidecontainer container" style="width: fit-content;">
-        <div class="row">
-          <div class="col-xs-4">
-            <p>X: <span id="gyroX"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="-1000" max="1000" value="0" class="slider" id="gyroXRange">
-          </div>
-          <div class="col-xs-4">
-            <p>Y: <span id="gyroY"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="-1000" max="1000" value="0" class="slider" id="gyroYRange">
-          </div>
-          <div class="col-xs-4">
-            <p>Z: <span id="gyroZ"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="-1000" max="1000" value="0" class="slider" id="gyroZRange">
-          </div>
+        <div class="col-sm-6" style="width: 45vw;">
+            <h1>Gyroscope</h1>
+            <div class="slidecontainer container" style="width: fit-content;">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <p>X: <span id="gyroX"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="-1000" max="1000" value="0" class="slider" id="gyroXRange">
+                    </div>
+                    <div class="col-xs-4">
+                        <p>Y: <span id="gyroY"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="-1000" max="1000" value="0" class="slider" id="gyroYRange">
+                    </div>
+                    <div class="col-xs-4">
+                        <p>Z: <span id="gyroZ"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="-1000" max="1000" value="0" class="slider" id="gyroZRange">
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
 
-    </div>
-
-    <div class="col-sm-6" style="width: 45vw;">
-      <h1>Magnetometer</h1>
-      <div class="slidecontainer container" style="width: fit-content;">
-        <div class="row">
-          <div class="col-xs-4">
-            <p>X: <span id="magnetX"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="-1000" max="1000" value="0" class="slider" id="magnetXRange">
-          </div>
-          <div class="col-xs-4">
-            <p>Y: <span id="demo"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="-1000" max="1000" value="0" class="slider" id="magnetYRange">
-          </div>
-          <div class="col-xs-4">
-            <p>Z: <span id="magnetZ"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="-1000" max="1000" value="0" class="slider" id="magnetZRange">
-          </div>
+        <div class="col-sm-6" style="width: 45vw;">
+            <h1>Magnetometer</h1>
+            <div class="slidecontainer container" style="width: fit-content;">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <p>X: <span id="magnetX"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="-1000" max="1000" value="0" class="slider" id="magnetXRange">
+                    </div>
+                    <div class="col-xs-4">
+                        <p>Y: <span id="demo"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="-1000" max="1000" value="0" class="slider" id="magnetYRange">
+                    </div>
+                    <div class="col-xs-4">
+                        <p>Z: <span id="magnetZ"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="-1000" max="1000" value="0" class="slider" id="magnetZRange">
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
- 
-    <div class="col-sm-6" style="width: 45vw;">
-      <h1>Color</h1>
-      <div class="slidecontainer container" style="width: fit-content;">
-        <div class="row">
-          <div class="col-xs-4">
-            <p>R: <span id="R"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="0" max="65535" value="0" class="slider" id="rRange">
-          </div>
-          <div class="col-xs-4">
-            <p>G: <span id="G"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="0" max="65535" value="0" class="slider" id="gRange">
-          </div>
-          <div class="col-xs-4">
-            <p>B: <span id="B"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="0" max="65535" value="0" class="slider" id="bRange">
-          </div>
-          <div class="col-xs-4">
-            <p>Light Intensity: <span id="light"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="0" max="65535" value="0" class="slider" id="lightRange">
-          </div>
+
+        <div class="col-sm-6" style="width: 45vw;">
+            <h1>Color</h1>
+            <div class="slidecontainer container" style="width: fit-content;">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <p>R: <span id="R"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="0" max="65535" value="0" class="slider" id="rRange">
+                    </div>
+                    <div class="col-xs-4">
+                        <p>G: <span id="G"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="0" max="65535" value="0" class="slider" id="gRange">
+                    </div>
+                    <div class="col-xs-4">
+                        <p>B: <span id="B"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="0" max="65535" value="0" class="slider" id="bRange">
+                    </div>
+                    <div class="col-xs-4">
+                        <p>Light Intensity: <span id="light"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="0" max="65535" value="0" class="slider" id="lightRange">
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    
-    <div class="col-sm-6" style="width: 45vw;">
-      <h1>Others</h1>
-      <div class="slidecontainer container" style="width: fit-content;">
-        <div class="row">
-          <div class="col-xs-4">
-            <p>Pressure: <span id="pressure"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="800" max="1100" value="0" class="slider" id="pressureRange">
-          </div>
-          <div class="col-xs-4">
-            <p>Temperature: <span id="temperature"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="-55" max="125" value="0" class="slider" id="temperatureRange">
-          </div>
-          
+
+        <div class="col-sm-6" style="width: 45vw;">
+            <h1>Others</h1>
+            <div class="slidecontainer container" style="width: fit-content;">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <p>Pressure: <span id="pressure"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="800" max="1100" value="0" class="slider" id="pressureRange">
+                    </div>
+                    <div class="col-xs-4">
+                        <p>Temperature: <span id="temperature"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="-55" max="125" value="0" class="slider" id="temperatureRange">
+                    </div>
+
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  
-    <div class="col-sm-6" style="width: 45vw;">
-      <h1>Others</h1>
-      <div class="slidecontainer container" style="width: fit-content;">
-        <div class="row">
-          <div class="col-xs-4">
-            <p>Proximity: <span id="proximity"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="0" max="255" value="0" class="slider" id="proximityRange">
-          </div>
-          <div class="col-xs-4">
-            <p>Humidity: <span id="humidity"></span></p>
-          </div>
-          <div class="col-xs-10">
-            <input type="range" min="0" max="100" value="0" class="slider" id="humidityRange">
-          </div>
+
+        <div class="col-sm-6" style="width: 45vw;">
+            <h1>Others</h1>
+            <div class="slidecontainer container" style="width: fit-content;">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <p>Proximity: <span id="proximity"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="0" max="255" value="0" class="slider" id="proximityRange">
+                    </div>
+                    <div class="col-xs-4">
+                        <p>Humidity: <span id="humidity"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="0" max="100" value="0" class="slider" id="humidityRange">
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-  <script src="./browserMqtt.js"></script>
-  <script>
-    var broker = 'wss://mqtt.eclipseprojects.io:443/mqtt';
-    var client = mqtt.connect(broker);
+    <script src="./browserMqtt.js"></script>
+    <script>
+        var broker = 'wss://mqtt.eclipseprojects.io:443/mqtt';
+        var client = mqtt.connect(broker);
 
-    var status_header = document.getElementById('status-header')
+        var status_header = document.getElementById('status-header')
 
-    client.on('connect', function () {
-      status_header.innerHTML = 'Connected to ' + broker;
-      console.log('Connected to ' + broker)
-    })
-    $("#accelXRange").on("input", function(){
-      $("#accelX").html($(this).val())
-      client.publish('clue-slider/accelX', this.value)
-    });
+        client.on('connect', function() {
+            status_header.innerHTML = 'Connected to ' + broker;
+            console.log('Connected to ' + broker)
+        })
+        $("#accelXRange").on("input", function() {
+            $("#accelX").html($(this).val())
+            client.publish('clue-slider', 'accelX' + this.value)
+        });
 
-    $("#accelYRange").on("input",function(){
-      $("#accelY").html($(this).val())
-      client.publish('clue-slider/accelY', this.value)
-    });
-    
-    $("#accelZRange").on("input",function(){
-      $("#accelZ").html($(this).val())
-      client.publish('clue-slider/accelZ', this.value)
-    });
-    
-    $("#gyroXRange").on("input", function(){
-      $("#gyroX").html($(this).val())
-      client.publish('clue-slider/gyroX', this.value)
-    });
+        $("#accelYRange").on("input", function() {
+            $("#accelY").html($(this).val())
+            client.publish('clue-slider', 'accelY' + this.value)
+        });
 
-    $("#gyroYRange").on("input", function(){
-      $("#gyroY").html($(this).val())
-      client.publish('clue-slider/gyroY', this.value)
-    });
+        $("#accelZRange").on("input", function() {
+            $("#accelZ").html($(this).val())
+            client.publish('clue-slider', 'accelZ' + this.value)
+        });
 
-    $("#gyroZRange").on("input", function(){
-      $("#gyroZ").html($(this).val())
-      client.publish('clue-slider/gyroZ', this.value)
-    });
+        $("#gyroXRange").on("input", function() {
+            $("#gyroX").html($(this).val())
+            client.publish('clue-slider', 'gyroX' + this.value)
+        });
 
-    $("#magnetXRange").on("input", function(){
-      $("#magnetX").html($(this).val())
-      client.publish('clue-slider/magnetX', this.value)
-    });
+        $("#gyroYRange").on("input", function() {
+            $("#gyroY").html($(this).val())
+            client.publish('clue-slider', 'gyroY' + this.value)
+        });
 
-    $("#magnetYRange").on("input", function(){
-      $("#magnetY").html($(this).val())
-      client.publish('clue-slider/magnetY', this.value)
-    });
+        $("#gyroZRange").on("input", function() {
+            $("#gyroZ").html($(this).val())
+            client.publish('clue-slider', 'gyroZ' + this.value)
+        });
 
-    $("#magnetZRange").on("input", function(){
-      $("#magnetZ").html($(this).val())
-      client.publish('clue-slider/magnetZ', this.value)
-    });
+        $("#magnetXRange").on("input", function() {
+            $("#magnetX").html($(this).val())
+            client.publish('clue-slider', 'magneX' + this.value)
+        });
 
-    $("#rRange").on("input", function(){
-      $("#R").html($(this).val())
-      client.publish('clue-slider/colorR', this.value)
-    });
+        $("#magnetYRange").on("input", function() {
+            $("#magnetY").html($(this).val())
+            client.publish('clue-slider', 'magneY' + this.value)
+        });
 
-    $("#gRange").on("input", function(){
-      $("#G").html($(this).val())
-      client.publish('clue-slider/colorG', this.value)
-    });
+        $("#magnetZRange").on("input", function() {
+            $("#magnetZ").html($(this).val())
+            client.publish('clue-slider', 'magneZ' + this.value)
+        });
 
-    $("#bRange").on("input", function(){
-      $("#B").html($(this).val())
-      client.publish('clue-slider/colorB', this.value)
-    });
+        $("#rRange").on("input", function() {
+            $("#R").html($(this).val())
+            client.publish('clue-slider', 'colorR' + this.value)
+        });
 
-    $("#lightRange").on("input", function(){
-      $("#light").html($(this).val())
-      client.publish('clue-slider/light', this.value)
-    });
+        $("#gRange").on("input", function() {
+            $("#G").html($(this).val())
+            client.publish('clue-slider', 'colorG' + this.value)
+        });
 
-    $("#pressureRange").on("input", function(){
-      $("#pressure").html($(this).val())
-      client.publish('clue-slider/pressure', this.value)
-    });
+        $("#bRange").on("input", function() {
+            $("#B").html($(this).val())
+            client.publish('clue-slider', 'colorB' + this.value)
+        });
 
-    $("#temperatureRange").on("input", function(){
-      $("#temperature").html($(this).val())
-      client.publish('clue-slider/temperature', this.value)
-    });
+        $("#lightRange").on("input", function() {
+            $("#light").html($(this).val())
+            client.publish('clue-slider', 'lightI' + this.value)
+        });
 
-    $("#proximityRange").on("input", function(){
-      $("#proximity").html($(this).val())
-      client.publish('clue-slider/proximity', this.value)
-    });
+        $("#pressureRange").on("input", function() {
+            $("#pressure").html($(this).val())
+            client.publish('clue-slider', 'pressU' + this.value)
+        });
 
-    $("#humidityRange").on("input", function(){
-      $("#humidity").html($(this).val())
-      client.publish('clue-slider/humidity', this.value)
-    });
-    
-    // sliderTemp.onmouseup = function () {
-    //   console.log(this.value)
-    //   client.publish('clue-slider', this.value)
-    // }
+        $("#temperatureRange").on("input", function() {
+            $("#temperature").html($(this).val())
+            client.publish('clue-slider', 'tempE' + this.value)
+        });
 
-  </script>
+        $("#proximityRange").on("input", function() {
+            $("#proximity").html($(this).val())
+            client.publish('clue-slider', 'proxI' + this.value)
+        });
+
+        $("#humidityRange").on("input", function() {
+            $("#humidity").html($(this).val())
+            client.publish('clue-slider', 'humiD' + this.value)
+        });
+
+        // sliderTemp.onmouseup = function () {
+        //   console.log(this.value)
+        //   client.publish('clue-slider', this.value)
+        // }
+    </script>
 </body>
 
 </html>
