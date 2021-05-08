@@ -1,4 +1,5 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,9 +17,14 @@
 
     <link rel="stylesheet" href="switch.css">
 </head>
+
 <body>
+
+    <!-- In this part we are making the body of the document
+        by making three round sliders and assigning them different
+        ids and same input type which is a checkbox -->
     <div class="col-sm-12">
-        <h1>MQTT Switch</h1> 
+        <h1>MQTT Switch</h1>
         <h4 id='status-header'>Connecting to broker...</h4>
         <div class="form-group container">
             <div class="row">
@@ -54,48 +60,50 @@
                 </label>
             </div>
 
-        
+
         </div>
     </div>
 
 </body>
 <script src="./browserMqtt.js"></script>
-<script >
-
+<script>
     // var client  = mqtt.connect({ host:'test.mosquitto.org', port: 8081})
-// or
-// var client  = mqtt.connect('wss://test.mosquitto.org:8081/mqtt')
+    // or
+    // var client  = mqtt.connect('wss://test.mosquitto.org:8081/mqtt')
 
-// var client  = mqtt.connect({ host:'mqtt.eclipse.org/mqtt', port: 443})
-// or
-// var client  = mqtt.connect('wss://mqtt.eclipse.org:443/mqtt')
+    // var client  = mqtt.connect({ host:'mqtt.eclipse.org/mqtt', port: 443})
+    // or
+    // var client  = mqtt.connect('wss://mqtt.eclipse.org:443/mqtt')
 
-var broker = 'wss://mqtt.eclipseprojects.io:443/mqtt';
-var client  = mqtt.connect(broker);
+    var broker = 'wss://mqtt.eclipseprojects.io:443/mqtt';
+    var client = mqtt.connect(broker);
 
-var status_header = document.getElementById('status-header')
+    var status_header = document.getElementById('status-header')
 
-client.on('connect', function () {
-    status_header.innerHTML = 'Connected to '+broker; 
-    console.log('Connected to '+broker)
-})
-  
-var pub_switch = document.getElementById('pub-switch');
-var pub_switch2 = document.getElementById('pub-switch2');
-var pub_switch3 = document.getElementById('pub-switch3');
-pub_switch.onclick = () => {
-    console.log(pub_switch.checked)
-    client.publish('cpx-switch/switch1', String(1+pub_switch.checked))
-}
-pub_switch2.onclick = () => {
-    console.log(pub_switch2.checked)
-    client.publish('cpx-switch/switch2', String(2+pub_switch2.checked))
-}
-pub_switch3.onclick = () => {
-    console.log(pub_switch3.checked)
-    client.publish('cpx-switch/switch3', String(3+pub_switch3.checked))
-}
+    client.on('connect', function() {
+        status_header.innerHTML = 'Connected to ' + broker;
+        console.log('Connected to ' + broker)
+    })
 
-
+    /*In this part the switches are get using DOM object in javascript
+    and add an event listener everytime it is clicked or checked.
+    It then publishes topic and different payload used to to turn 
+    on the neopixel light in device simulator express*/
+    var pub_switch = document.getElementById('pub-switch');
+    var pub_switch2 = document.getElementById('pub-switch2');
+    var pub_switch3 = document.getElementById('pub-switch3');
+    pub_switch.onclick = () => {
+        console.log(String('1' + pub_switch.checked))
+        client.publish('cpx-switch', String('1' + pub_switch.checked))
+    }
+    pub_switch2.onclick = () => {
+        console.log(String('2' + pub_switch.checked))
+        client.publish('cpx-switch', String('2' + pub_switch2.checked))
+    }
+    pub_switch3.onclick = () => {
+        console.log(String('3' + pub_switch.checked))
+        client.publish('cpx-switch', String('3' + pub_switch3.checked))
+    }
 </script>
+
 </html>

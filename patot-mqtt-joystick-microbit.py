@@ -6,6 +6,11 @@ def on_connect(client, userdata, flags, rc):
     if rc == 0:
         client.subscribe("mousemovement")
         display.show(Image.YES)
+
+'''This part is where the payload message is evaluated.
+The message payload is then compared with certain values and
+if it mets the condition displays some immage directions
+generated online.'''        
 def on_message(client, userdata, msg):
     if msg.payload.decode() == "north":
         display.show(Image.ARROW_N)

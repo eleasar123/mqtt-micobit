@@ -36,7 +36,7 @@ def on_message(client, userdata, msg):
         display_text(int(msg.payload.decode()))
     # display_text(int(msg.payload.decode()))
 
-# clue.sea_level_pressure = 1020
+clue.sea_level_pressure = 1020
 
 clue_data = clue.simple_text_display(text_scale=2)
 
