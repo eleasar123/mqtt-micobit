@@ -218,6 +218,12 @@
                     <div class="col-xs-10">
                         <input type="range" min="-55" max="125" value="0" class="slider" id="temperatureRange">
                     </div>
+                    <div class="col-xs-4">
+                        <p>Altitude: <span id="altitude"></span></p>
+                    </div>
+                    <div class="col-xs-10">
+                        <input type="range" min="-55" max="125" value="0" class="slider" id="temperatureRange">
+                    </div>
 
                 </div>
             </div>
@@ -339,10 +345,7 @@
             client.publish('clue-slider', 'humiD' + this.value)
         });
 
-        // sliderTemp.onmouseup = function () {
-        //   console.log(this.value)
-        //   client.publish('clue-slider', this.value)
-        // }
+      
     </script>
 </body>
 

@@ -27,7 +27,16 @@ def on_connect(client, userdata, flags, rc):
     if rc == 0:
         client.subscribe("clue-slider")
         display_text(0)
-
+accelX=0
+accelY=0
+accelZ=0
+gyroX=0
+gyroY=0
+magnetX=0
+magnetY=0
+magnetZ=0
+clue.pressure=800
+clue.altitude=0
 def on_message(client, userdata, msg):
     input = str(msg.payload.decode())
     print(input)
@@ -36,10 +45,10 @@ def on_message(client, userdata, msg):
     payload = input[5:]
     print(payload)
     if slider == "accelX":
-        clue_data[0].text = "Accel: {} {} {} m/s^2".format(accelX=int(payload))
+        clue_data[0].text.format(accelX=int(payload))
         # display_text(int(payload))
     elif slider == "accelX":
-        clue_data[0].text = "Accel: {} {} {} m/s^2".format(accelY=int(payload))
+        clue_data[0]text.format(accelY=int(payload))
     elif slider == "accelZ":
         clue_data[0].text = "Accel: {} {} {} m/s^2".format(accelZ=int(payload))
     elif slider == "magneX":
