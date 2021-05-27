@@ -12,8 +12,8 @@ from adafruit_clue import clue
 import paho.mqtt.client as mqtt
 
 def display_text(temp):
-    clue_data[0].text = "Accel: {} {} {} m/s^2".format(*clue.acceleration)
-    clue_data[1].text = "Gyro: {} {} {} dps".format(*clue.gyro)
+    clue_data[0].text = "Accel: {} {} {} m/s^2".format(accelX,accelY, accelZ)
+    clue_data[1].text = "Gyro: {} {} {} dps".format(gyroX)
     clue_data[2].text = "Magnetic: {} {} {} uTesla".format(*clue.magnetic)
     clue_data[3].text = "Pressure: {} hPa".format(clue.pressure)
     clue_data[4].text = "Altitude: {:.0f} m".format(clue.altitude)
